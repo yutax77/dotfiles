@@ -7,6 +7,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
 
 filetype plugin indent on
 
@@ -20,6 +21,44 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 
+"-----------------------------------------------------------------------------
+" unite.vimの設定
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+" バッファ一覧
+noremap <C-P> :Unite buffer<CR>
+" ファイル一覧
+noremap <C-N> :Unite -buffer-name=file file<CR>
+" 最近使ったファイルの一覧
+noremap <C-Z> :Unite file_mru<CR>
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+" 初期設定関数を起動する
+au FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  " Overwrite settings.
+endfunction
+" 様々なショートカット
+call unite#set_substitute_pattern('file', '\$\w\+', '\=eval(submatch(0))', 200)
+call unite#set_substitute_pattern('file', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/"', 2)
+call unite#set_substitute_pattern('file', '^@', '\=getcwd()."/*"', 1)
+call unite#set_substitute_pattern('file', '^;r', '\=$VIMRUNTIME."/"')
+call unite#set_substitute_pattern('file', '^\~', escape($HOME, '\'), -2)
+call unite#set_substitute_pattern('file', '\\\@<! ', '\\ ', -20)
+call unite#set_substitute_pattern('file', '\\ \@!', '/', -30)
+if has('win32') || has('win64')
+  call unite#set_substitute_pattern('file', '^;p', 'C:/Program Files/')
+  call unite#set_substitute_pattern('file', '^;v', '~/vimfiles/')
+else
+  call unite#set_substitute_pattern('file', '^;v', '~/.vim/')
+endif
 "-----------------------------------------------------------------------------
 " vim: set ts=4 sw=4 sts=0:
 
