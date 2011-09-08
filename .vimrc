@@ -1,13 +1,14 @@
 "-----------------------------------------------------------------------------
-" pathogeの設定
-" pathogenでftdetectなどをloadさせるために一度ファイルタイプ判定をoff
+" Vundle設定
+set nocompatible
 filetype off
-" pathogen.vimによってbundle配下のpluginをpathに加える
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-set helpfile=$VIMRUNTIME/dochelp.txt
-" ファイルタイプ判定をon
-filetype plugin on
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'Shougo/neocomplcache'
+
+filetype plugin indent on
 
 "-----------------------------------------------------------------------------
 " NERD_commentsの設定
