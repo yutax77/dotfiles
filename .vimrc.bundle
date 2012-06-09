@@ -1,0 +1,13 @@
+"Vundle
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+"Vundleで管理するプラグインたち
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
+
+filetype plugin indent on

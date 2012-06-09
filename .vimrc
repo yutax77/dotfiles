@@ -1,15 +1,7 @@
-"-----------------------------------------------------------------------------
-" Vundle設定
 set nocompatible
-filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-
-filetype plugin indent on
+" Vundleで管理しているプラグインの読み込み
+source ~/.vimrc.bundle
 
 "-----------------------------------------------------------------------------
 " NERD_commentsの設定
