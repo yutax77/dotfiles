@@ -8,5 +8,6 @@ call vundle#rc()
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
+Bundle 'molokai'
 
 filetype plugin indent on

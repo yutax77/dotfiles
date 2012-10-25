@@ -185,7 +185,7 @@ let format_allow_over_tw = 1	" ぶら下り可能幅
 "ステータスラインに文字コードと改行文字を表示する
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 "カラースキームの設定
-colorscheme elflord		"gvim使用時はgvimrcを編集すること
+colorscheme molokai		"gvim使用時はgvimrcを編集すること
 " カーソル行をハイライト
 set cursorline
 " カレントウィンドウのみに罫線を引く
